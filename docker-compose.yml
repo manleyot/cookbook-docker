@@ -1,0 +1,17 @@
+database:
+  image: manleyot/cookbook-database
+  volumes:
+    - data:/var/lib/postgresql/data
+
+backend:
+  image: manleyot/cookbook-backend
+  ports:
+    - 3001:3001
+  links:
+    - database:postgres
+
+frontend:
+  image: manleyot/cookbook-frontend
+  ports:
+    - 80:3000
+
